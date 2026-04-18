@@ -1,0 +1,5 @@
+// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
+
+#include "rk3588-rock-5-itx-fixup.dts"
+
+// No PLUS-specific changes yet - uses same device tree as non-Plus
