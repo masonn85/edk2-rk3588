@@ -1,0 +1,38 @@
+#
+# SPDX-License-Identifier: BSD-2-Clause-Patent
+#
+
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                    = FirmwareUpdate
+  FILE_GUID                    = A1B2C3D4-E5F6-7890-ABCD-EF1234567890
+  MODULE_TYPE                   = UEFI_APPLICATION
+  VERSION_STRING               = 1.0
+
+[Sources]
+  FirmwareUpdate.c
+
+[Packages]
+  EmbeddedPkg/EmbeddedPkg.dec
+  MdePkg/MdePkg.dec
+  MdeModulePkg/MdeModulePkg.dec
+  Silicon/Rockchip/RockchipPkg.dec
+
+[LibraryClasses]
+  UefiLib
+  UefiBootServicesTableLib
+  UefiRuntimeServicesTableLib
+  MemoryAllocationLib
+  BaseLib
+  BaseMemoryLib
+  DebugLib
+  FileHandleLib
+
+[Protocols]
+  gUniNorFlashProtocolGuid
+  gEfiFileExplorerProtocolGuid
+  gEfiDevicePathProtocolGuid
+  gEfiSimpleFileSystemProtocolGuid
+
+[Guids]
+  gEfiFileInfoGuid
