@@ -23,12 +23,14 @@
 [Packages]
   MdePkg/MdePkg.dec
   MdeModulePkg/MdeModulePkg.dec
+  NetworkPkg/NetworkPkg.dec
   Silicon/Rockchip/RockchipPkg.dec
 
 [LibraryClasses]
   DebugLib
   DevicePathLib
   HiiLib
+  PcdLib
   UefiBootServicesTableLib
   UefiRuntimeServicesTableLib
   UefiDriverEntryPoint
@@ -40,8 +42,6 @@
   gNetworkStackEnabledProtocolGuid
   gNetworkStackIpv4EnabledProtocolGuid
   gNetworkStackIpv6EnabledProtocolGuid
-  gNetworkStackPxeBootEnabledProtocolGuid
-  gNetworkStackHttpBootEnabledProtocolGuid
 
 [Pcd]
   gRockchipTokenSpaceGuid.PcdNetworkStackEnabledDefault
@@ -49,6 +49,14 @@
   gRockchipTokenSpaceGuid.PcdNetworkStackIpv6EnabledDefault
   gRockchipTokenSpaceGuid.PcdNetworkStackPxeBootEnabledDefault
   gRockchipTokenSpaceGuid.PcdNetworkStackHttpBootEnabledDefault
+  gRockchipTokenSpaceGuid.PcdNetworkStackIpv4PxeEnabledDefault
+  gRockchipTokenSpaceGuid.PcdNetworkStackIpv4HttpEnabledDefault
+  gRockchipTokenSpaceGuid.PcdNetworkStackIpv6PxeEnabledDefault
+  gRockchipTokenSpaceGuid.PcdNetworkStackIpv6HttpEnabledDefault
+  gEfiNetworkPkgTokenSpaceGuid.PcdIPv4PXESupport
+  gEfiNetworkPkgTokenSpaceGuid.PcdIPv6PXESupport
+  gEfiNetworkPkgTokenSpaceGuid.PcdIPv4HttpSupport
+  gEfiNetworkPkgTokenSpaceGuid.PcdIPv6HttpSupport
 
 [Depex]
   gEfiVariableArchProtocolGuid        AND

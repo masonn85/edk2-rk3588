@@ -764,17 +764,11 @@ FspiLib|Silicon/Rockchip/Library/FspiLib/FspiLib.inf
 !endif
 
 !if $(NETWORK_PXE_BOOT_ENABLE) == TRUE
-  NetworkPkg/UefiPxeBcDxe/UefiPxeBcDxe.inf {
-    <LibraryClasses>
-      NULL|Silicon/Rockchip/Drivers/NetworkStackConfigDxe/NetworkStackPxeBootEnabledLib.inf
-  }
+  NetworkPkg/UefiPxeBcDxe/UefiPxeBcDxe.inf
 !endif
 
 !if $(NETWORK_HTTP_BOOT_ENABLE) == TRUE
-  NetworkPkg/HttpBootDxe/HttpBootDxe.inf {
-    <LibraryClasses>
-      NULL|Silicon/Rockchip/Drivers/NetworkStackConfigDxe/NetworkStackHttpBootEnabledLib.inf
-  }
+  NetworkPkg/HttpBootDxe/HttpBootDxe.inf
 !endif
 
   #

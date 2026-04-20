@@ -314,14 +314,18 @@
   gRK3588TokenSpaceGuid.PcdDisplayRotationDefault|0
   gRK3588TokenSpaceGuid.PcdHdmiSignalingModeDefault|$(HDMI_SIGNALING_MODE_AUTO)
 
-  #
+#
   # Network support flags and default values
   #
   gRockchipTokenSpaceGuid.PcdNetworkStackEnabledDefault|TRUE
   gRockchipTokenSpaceGuid.PcdNetworkStackIpv4EnabledDefault|TRUE
-  gRockchipTokenSpaceGuid.PcdNetworkStackIpv6EnabledDefault|TRUE
+  gRockchipTokenSpaceGuid.PcdNetworkStackIpv6EnabledDefault|FALSE
   gRockchipTokenSpaceGuid.PcdNetworkStackPxeBootEnabledDefault|TRUE
   gRockchipTokenSpaceGuid.PcdNetworkStackHttpBootEnabledDefault|TRUE
+  gRockchipTokenSpaceGuid.PcdNetworkStackIpv4PxeEnabledDefault|TRUE
+  gRockchipTokenSpaceGuid.PcdNetworkStackIpv4HttpEnabledDefault|TRUE
+  gRockchipTokenSpaceGuid.PcdNetworkStackIpv6PxeEnabledDefault|FALSE
+  gRockchipTokenSpaceGuid.PcdNetworkStackIpv6HttpEnabledDefault|FALSE
 
 [PcdsPatchableInModule]
   gEfiMdePkgTokenSpaceGuid.PcdUartDefaultBaudRate|1500000

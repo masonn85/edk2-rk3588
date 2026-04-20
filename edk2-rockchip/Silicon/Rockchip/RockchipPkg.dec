@@ -111,3 +111,9 @@
   gRockchipTokenSpaceGuid.PcdNetworkStackIpv6EnabledDefault|FALSE|BOOLEAN|0x05000003
   gRockchipTokenSpaceGuid.PcdNetworkStackPxeBootEnabledDefault|FALSE|BOOLEAN|0x05000004
   gRockchipTokenSpaceGuid.PcdNetworkStackHttpBootEnabledDefault|FALSE|BOOLEAN|0x05000005
+  gRockchipTokenSpaceGuid.PcdNetworkStackIpv4PxeEnabledDefault|FALSE|BOOLEAN|0x05000006
+  gRockchipTokenSpaceGuid.PcdNetworkStackIpv4HttpEnabledDefault|FALSE|BOOLEAN|0x05000007
+  gRockchipTokenSpaceGuid.PcdNetworkStackIpv6PxeEnabledDefault|FALSE|BOOLEAN|0x05000008
+  gRockchipTokenSpaceGuid.PcdNetworkStackIpv6HttpEnabledDefault|FALSE|BOOLEAN|0x05000009
+
+

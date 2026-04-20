@@ -44,18 +44,34 @@ formset
         flags       = RESET_REQUIRED,
         default     = NETWORK_STACK_IPV6_ENABLED_DEFAULT,
       endcheckbox;
-      checkbox varid = NetworkStackConfigData.PxeBootEnabled,
-        prompt      = STRING_TOKEN(STR_NETWORK_STACK_PXE_BOOT_STATE_PROMPT),
-        help        = STRING_TOKEN(STR_NETWORK_STACK_PXE_BOOT_STATE_HELP),
-        flags       = RESET_REQUIRED,
-        default     = NETWORK_STACK_PXE_BOOT_ENABLED_DEFAULT,
-      endcheckbox;
-      checkbox varid = NetworkStackConfigData.HttpBootEnabled,
-        prompt      = STRING_TOKEN(STR_NETWORK_STACK_HTTP_BOOT_STATE_PROMPT),
-        help        = STRING_TOKEN(STR_NETWORK_STACK_HTTP_BOOT_STATE_HELP),
-        flags       = RESET_REQUIRED,
-        default     = NETWORK_STACK_HTTP_BOOT_ENABLED_DEFAULT,
-      endcheckbox;
+      suppressif ideqval NetworkStackConfigData.Ipv4Enabled == 0;
+        checkbox varid = NetworkStackConfigData.Ipv4PxeEnabled,
+          prompt      = STRING_TOKEN(STR_NETWORK_STACK_IPV4_PXE_PROMPT),
+          help        = STRING_TOKEN(STR_NETWORK_STACK_IPV4_PXE_HELP),
+          flags       = RESET_REQUIRED,
+          default     = NETWORK_STACK_IPV4_PXE_ENABLED_DEFAULT,
+        endcheckbox;
+        checkbox varid = NetworkStackConfigData.Ipv4HttpEnabled,
+          prompt      = STRING_TOKEN(STR_NETWORK_STACK_IPV4_HTTP_PROMPT),
+          help        = STRING_TOKEN(STR_NETWORK_STACK_IPV4_HTTP_HELP),
+          flags       = RESET_REQUIRED,
+          default     = NETWORK_STACK_IPV4_HTTP_ENABLED_DEFAULT,
+        endcheckbox;
+      endif;
+      suppressif ideqval NetworkStackConfigData.Ipv6Enabled == 0;
+        checkbox varid = NetworkStackConfigData.Ipv6PxeEnabled,
+          prompt      = STRING_TOKEN(STR_NETWORK_STACK_IPV6_PXE_PROMPT),
+          help        = STRING_TOKEN(STR_NETWORK_STACK_IPV6_PXE_HELP),
+          flags       = RESET_REQUIRED,
+          default     = NETWORK_STACK_IPV6_PXE_ENABLED_DEFAULT,
+        endcheckbox;
+        checkbox varid = NetworkStackConfigData.Ipv6HttpEnabled,
+          prompt      = STRING_TOKEN(STR_NETWORK_STACK_IPV6_HTTP_PROMPT),
+          help        = STRING_TOKEN(STR_NETWORK_STACK_IPV6_HTTP_HELP),
+          flags       = RESET_REQUIRED,
+          default     = NETWORK_STACK_IPV6_HTTP_ENABLED_DEFAULT,
+        endcheckbox;
+      endif;
     endif;
   endform;
 endformset;

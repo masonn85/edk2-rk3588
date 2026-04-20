@@ -12,6 +12,7 @@
 #include <Library/HiiLib.h>
 #include <Library/UefiBootServicesTableLib.h>
 #include <Library/UefiRuntimeServicesTableLib.h>
+#include <Library/PcdLib.h>
 
 #include "NetworkStackConfigDxe.h"
 
@@ -109,11 +110,9 @@ NetworkStackConfigApply (
     CHAR8       *Name;
     BOOLEAN     Enabled;
   } States[] = {
-    { &gNetworkStackEnabledProtocolGuid,         "Network Stack", Config->Enabled         },
-    { &gNetworkStackIpv4EnabledProtocolGuid,     "IPv4 Stack",    Config->Ipv4Enabled     },
-    { &gNetworkStackIpv6EnabledProtocolGuid,     "IPv6 Stack",    Config->Ipv6Enabled     },
-    { &gNetworkStackPxeBootEnabledProtocolGuid,  "PXE Boot",      Config->PxeBootEnabled  },
-    { &gNetworkStackHttpBootEnabledProtocolGuid, "HTTP Boot",     Config->HttpBootEnabled },
+    { &gNetworkStackEnabledProtocolGuid,     "Network Stack", Config->Enabled       },
+    { &gNetworkStackIpv4EnabledProtocolGuid, "IPv4 Stack",    Config->Ipv4Enabled   },
+    { &gNetworkStackIpv6EnabledProtocolGuid, "IPv6 Stack",    Config->Ipv6Enabled   },
   };
 
   for (Index = 0; Index < ARRAY_SIZE (States); Index++) {
@@ -133,6 +132,14 @@ NetworkStackConfigApply (
       }
     }
   }
+
+  //
+  // Set Dynamic PCDs for per-version PXE/HTTP control (NetworkPkg reads these)
+  //
+  PcdSet8S (PcdIPv4PXESupport,  Config->Ipv4PxeEnabled  ? 1 : 0);
+  PcdSet8S (PcdIPv6PXESupport,  Config->Ipv6PxeEnabled  ? 1 : 0);
+  PcdSetBoolS (PcdIPv4HttpSupport, Config->Ipv4HttpEnabled);
+  PcdSetBoolS (PcdIPv6HttpSupport, Config->Ipv6HttpEnabled);
 }
 
 /**
@@ -158,8 +165,10 @@ NetworkStackConfigInitialize (
   Config.Enabled         = NETWORK_STACK_ENABLED_DEFAULT;
   Config.Ipv4Enabled     = NETWORK_STACK_IPV4_ENABLED_DEFAULT;
   Config.Ipv6Enabled     = NETWORK_STACK_IPV6_ENABLED_DEFAULT;
-  Config.PxeBootEnabled  = NETWORK_STACK_PXE_BOOT_ENABLED_DEFAULT;
-  Config.HttpBootEnabled = NETWORK_STACK_HTTP_BOOT_ENABLED_DEFAULT;
+  Config.Ipv4PxeEnabled  = NETWORK_STACK_IPV4_PXE_ENABLED_DEFAULT;
+  Config.Ipv4HttpEnabled = NETWORK_STACK_IPV4_HTTP_ENABLED_DEFAULT;
+  Config.Ipv6PxeEnabled  = NETWORK_STACK_IPV6_PXE_ENABLED_DEFAULT;
+  Config.Ipv6HttpEnabled = NETWORK_STACK_IPV6_HTTP_ENABLED_DEFAULT;
 
   Size   = sizeof (NETWORK_STACK_CONFIG_VARSTORE_DATA);
   Status = gRT->GetVariable (
